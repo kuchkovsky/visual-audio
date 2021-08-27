@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.SubScene?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.172" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kuchkovsky.cpp.visualaudio.gui.Controller">
+    <center>
+        <VBox BorderPane.alignment="CENTER">
+            <children>
+                <SubScene fx:id="visualScene" height="200.0" width="200.0">
+                    <root>
+                        <Region />
+                    </root>
+                </SubScene>
+            <Separator>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </Separator>
+                <VBox alignment="TOP_CENTER">
+                    <children>
+                        <Label fx:id="playerTimeLabel" alignment="TOP_CENTER" text="00:00:00">
+                            <VBox.margin>
+                                <Insets />
+                            </VBox.margin>
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                        <GridPane alignment="TOP_CENTER">
+                            <columnConstraints>
+                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <JFXRadioButton fx:id="audioBarChartRadioButton" selected="true" text="Діаграма спектру частот">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="toggleGroup" />
+                                    </toggleGroup>
+                                </JFXRadioButton>
+                                <JFXRadioButton fx:id="audioAreaChartRadioButton" text="Діаграма області спектру частот" toggleGroup="$toggleGroup" GridPane.columnIndex="1" />
+                            </children>
+                        </GridPane>
+                        <GridPane>
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="60.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                        <HBox spacing="5.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
+                           <children>
+                                        <JFXButton fx:id="playButton" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="150.0" text="Відтворити" HBox.hgrow="ALWAYS" />
+                                        <JFXButton fx:id="pauseButton" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="150.0" text="Пауза" HBox.hgrow="ALWAYS" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets right="5.0" />
+                           </GridPane.margin>
+                        </HBox>
+                                <Label fx:id="currentFileLabel" text="Виберіть файл..." GridPane.rowIndex="1">
+                                    <GridPane.margin>
+                                        <Insets bottom="5.0" left="7.0" top="10.0" />
+                                    </GridPane.margin>
+                                    <font>
+                                        <Font name="System Bold" size="12.0" />
+                                    </font>
+                                </Label>
+                                <JFXButton fx:id="openFileButton" prefWidth="300.0" text="Відкрити файл">
+                                    <GridPane.margin>
+                                        <Insets left="5.0" />
+                                    </GridPane.margin>
+                                </JFXButton>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="10.0" />
+                            </VBox.margin>
+                        </GridPane>
+                    </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+                </VBox>
+            </children>
+        </VBox>
+    </center>
+    <right>
+        <HBox BorderPane.alignment="CENTER">
+            <children>
+                <Separator orientation="VERTICAL" />
+                <VBox alignment="TOP_CENTER" prefWidth="200.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label id="audio-recording-label" text="Запис аудіо">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin></Label>
+                        <HBox maxWidth="1.7976931348623157E308" spacing="5.0">
+                            <children>
+                                <JFXButton fx:id="startAudioRecordingButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" text="Старт" HBox.hgrow="ALWAYS" />
+                                <JFXButton fx:id="stopAudioRecordingButton" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" text="Стоп" HBox.hgrow="ALWAYS" />
+                            </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                        </HBox>
+                        <Label fx:id="recorderTimeLabel" text="00:00:00">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                        <Separator />
+                        <Label text="Список записів">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="5.0" top="5.0" />
+                            </VBox.margin>
+                        </Label>
+                        <JFXListView fx:id="recordListView" />
+                    </children>
+                    <HBox.margin>
+                        <Insets bottom="5.0" left="2.0" right="5.0" top="5.0" />
+                    </HBox.margin>
+                </VBox>
+            </children>
+        </HBox>
+    </right>
+</BorderPane>

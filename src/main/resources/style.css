@@ -1,0 +1,72 @@
+* {
+    -fx-primary: #2A2E37;
+    -fx-secondary: DODGERBLUE;
+    -fx-secondary-selected: #166DC3;
+    -fx-secondary-hover: #13569B;
+    -fx-background: #3f424b;
+    -fx-primarytext: #B2B2B2;
+    -fx-secondarytext: #E1E1E1;
+    -fx-text-fill: -fx-primarytext;
+    -fx-font-family: "Roboto Condensed";
+}
+
+#audio-recording-label {
+    -fx-font-size: 18;
+}
+
+#playerTimeLabel {
+    -fx-font-size: 18;
+}
+
+#currentFileLabel {
+    -fx-font-size: 12;
+}
+
+.root {
+    -fx-background-color: -fx-primary;
+}
+
+.jfx-button {
+    -jfx-button-type: FLAT;
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-secondary;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-font-size: 10pt;
+}
+
+.jfx-button:hover {
+    -fx-border-color: -fx-secondary;
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: -fx-primary;
+}
+
+.jfx-radio-button {
+    -jfx-selected-color: -fx-secondary;
+}
+
+.list-view {
+    -fx-background-color: -fx-background;
+}
+
+.list-view .list-cell:hover {
+    -fx-background-color: -fx-secondary-hover;
+}
+
+.list-view .list-cell:selected {
+    -fx-background-color: -fx-secondary-selected;
+}
+
+.list-view .list-cell {
+    -fx-background-color: #2C3137;
+    -fx-text-fill: white;
+}
+
+.list-view .label {
+    -fx-text-fill: white;
+}
+
+.jfx-rippler {
+    -jfx-rippler-fill: deepskyblue;
+}
+

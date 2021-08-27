@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>kuchkovsky.cpp</groupId>
+    <artifactId>visual-audio</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+
+    <name>VisualAudio</name>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.jfoenix</groupId>
+            <artifactId>jfoenix</artifactId>
+            <version>8.0.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jfxtras</groupId>
+            <artifactId>jfxtras-font-roboto</artifactId>
+            <version>8.0-r6</version>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>windows-profile</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+            </activation>
+            <properties>
+                <os.installer>exe</os.installer>
+            </properties>
+        </profile>
+        <profile>
+            <id>mac-os-x-profile</id>
+            <activation>
+                <os>
+                    <name>mac os x</name>
+                </os>
+            </activation>
+            <properties>
+                <os.installer>dmg</os.installer>
+            </properties>
+        </profile>
+        <profile>
+            <id>debian-profile</id>
+            <activation>
+                <os>
+                    <name>linux</name>
+                </os>
+            </activation>
+            <properties>
+                <os.installer>deb</os.installer>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.zenjava</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>8.8.3</version>
+                <configuration>
+                    <vendor>Kuchkovsky Development Studio</vendor>
+                    <appName>${project.name}</appName>
+                    <title>${project.name}</title>
+                    <mainClass>kuchkovsky.cpp.visualaudio.gui.VisualAudio</mainClass>
+                    <bundler>${os.installer}</bundler>
+                    <nativeReleaseVersion>${project.version}</nativeReleaseVersion>
+                    <verbose>true</verbose>
+                    <needShortcut>true</needShortcut>
+                    <needMenu>true</needMenu>
+                    <bundleArguments>
+                        <icon.ico>src/main/resources/icon.ico</icon.ico>
+                        <icon.icns>src/main/resources/icon.icns</icon.icns>
+                        <icon.png>src/main/resources/icon.png</icon.png>
+                    </bundleArguments>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>create-jfxjar</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build-jar</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>create-native</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build-native</goal>
+                        </goals>
+                        <configuration>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.5</version>
+                <configuration>
+                    <mainClass>kuchkovsky.cpp.visualaudio.gui.VisualAudio</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
